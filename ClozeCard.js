@@ -1,27 +1,24 @@
 function ClozeCard(text, cloze){
-	this.text = text,
-	this.cloze = cloze
-}
+	this.fullText = text,
+	this.cloze = cloze,
+	this.partial = text.replace(cloze, "...")
 
-ClozeCard.prototype.partial = function(){
-
-}
-
-ClozeCard.prototype.fullText = function(){
-	
+	if (this.fullText.indexOf(this.cloze) === -1){
+			console.log("Incorrect cloze text.")
+	}
 }
 
 var firstPresidentCloze = new ClozeCard(
-    "George Washington was the first president of the United States.", "George Washington");
+	"George Washington was the first president of the United States.", "George Washington");
 
 // "George Washington"
-console.log(firstPresidentCloze.cloze); 
+console.log("Cloze: " + firstPresidentCloze.cloze); 
 
 // " ... was the first president of the United States."
-console.log(firstPresidentCloze.partial);
+console.log("Partial text: " + firstPresidentCloze.partial);
 
 // "George Washington was the first president of the United States."
-console.log(firstPresidentCloze.fullText);
+console.log("Full text: " + firstPresidentCloze.fullText);
 
 // Should throw or log an error because "oops" doesn't appear in "This doesn't work"
 var brokenCloze = new ClozeCard("This doesn't work", "oops");

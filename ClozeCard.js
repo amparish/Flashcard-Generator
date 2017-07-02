@@ -8,17 +8,20 @@ function ClozeCard(text, cloze){
 	}
 }
 
-var firstPresidentCloze = new ClozeCard(
-	"George Washington was the first president of the United States.", "George Washington");
+var clozeCards = [
+	new ClozeCard("George Washington was the first president of the United States.", "George Washington"),
+	new ClozeCard("Thomas Jefferson was the third president of the United States.", "Thomas Jefferson")
+];
+
 
 // "George Washington"
-console.log("Cloze: " + firstPresidentCloze.cloze); 
+console.log("Cloze: " + clozeCards[0].cloze); 
 
 // " ... was the first president of the United States."
-console.log("Partial text: " + firstPresidentCloze.partial);
+console.log("Partial text: " + clozeCards[0].partial);
 
 // "George Washington was the first president of the United States."
-console.log("Full text: " + firstPresidentCloze.fullText);
+console.log("Full text: " + clozeCards[0].fullText);
 
 // Should throw or log an error because "oops" doesn't appear in "This doesn't work"
 var brokenCloze = new ClozeCard("This doesn't work", "oops");

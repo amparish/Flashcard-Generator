@@ -2,8 +2,8 @@ var fs = require("fs");
 var inquirer = require("inquirer");
 var basic = require("./BasicCard");
 var cloze = require("./ClozeCard");
-//var basicCards = [];
-//var clozeCards = [];
+var basicCards = [];
+var clozeCards = [];
 
 function start(){
 	inquirer.prompt([
@@ -36,9 +36,9 @@ function start(){
 							name: "answer"
 						}
 					]).then(function(makeBasicCard){
-						var newBasicCard = new BasicCard(user.question, user.answer);
+						var newBasicCard = new BasicCard(makeBasicCard.question, makeBasicCard.answer);
 							// error BasicCard not defined
-						basicCards.push(basicCard);
+						basicCards.push(newBasicCard);
 
 						fs.appendFile("basiccards.txt", basicCards, function(err){
 							if (err) {
@@ -63,7 +63,7 @@ function start(){
 					]).then(function(makeClozeCard){
 						var newClozeCard = new ClozeCard(makeClozeCard.fullText, makeClozeCard.cloze);
 							// error ClozeCard not defined
-						clozeCards.push(ClozeCard);
+						clozeCards.push(newClozeCard);
 
 						fs.appendFile("clozecards.txt", clozeCards, function(err){
 							if (err) {
